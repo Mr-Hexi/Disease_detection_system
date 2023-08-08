@@ -1,0 +1,182 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+
+{% block content %}
+
+<style>
+
+
+
+.section-header {
+  max-width: 1240px;
+  padding: 0 10px;
+  margin: 10px auto;
+}
+
+.section-subheading {
+  text-align: center;
+}
+
+.section-heading {
+  text-align: center;
+  font-size: 3rem;
+  padding: 20px 0;
+  font-weight: 600;
+}
+
+
+.contact-container {
+  margin-top: 60px ;
+  padding: 10px 120px;
+  background-color: #f3fbfa;
+}
+.contant-table form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.con-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-around;
+  
+}
+.contact-table,
+.contact-map {
+  width: 600px;
+  height: 450px;
+}
+.contact-map h2,
+.contact-table h2 {
+  font-size: 1rem;
+  font-weight: 700;
+  /* font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif; */
+  font-family:  'Ubuntu',sans-serif;
+  padding: 20px 0px;
+}
+.contact-map p {
+  font-size: 0.9rem;
+  padding-bottom: 20px;
+}
+.contact-map iframe{
+  border-radius: 10px;
+  border: none;
+}
+.contact-table input,
+.contact-table textarea {
+  width: 80%;
+  padding: 10px;
+  margin: 10px 0px;
+  border: none;
+  background-color: white;
+}
+.contact-table input:focus,
+.contact-table textarea:focus {
+  /* border: 2px solid #000; */
+  outline: none;
+}
+.contact-table input[type="submit"] {
+  background-color: rgba(147, 214, 208, 1);
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+
+  padding: 9px 25px;
+  font-size: 1rem;
+}
+@media (max-width: 1360px) {
+  .contact-container {
+    padding: 10px 100px;
+  }
+}
+
+@media (max-width: 1195px){
+  .con-container {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+  .contact-table,
+  .contact-map {
+    width: 800px;
+    height: auto;
+    text-align: center;
+  }
+}
+
+@media (max-width: 800px) {
+  .contact-table,
+  .contact-map {
+    width: 100%;
+    height: auto;
+    text-align: center;
+  }
+  
+  .contact-container {
+    padding: 10px 15px;
+  }
+  .contact-table input,
+  .contact-table textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 15px 0px;
+  }
+  .contact-map iframe{
+    width: 100%;
+  }
+  .contact-table input,
+.contact-table textarea {
+  width: 90%;
+  padding: 10px;
+  margin: 15px 0px; 
+}
+}
+  </style>
+
+  <section id="contact" class="contact" >
+    <div class="contact-container">
+      <div class="section-header">
+        <!-- <h3 class="section-subheading">- Contact -</h3> -->
+        <h1 class="section-heading">LET'S CONNECT</h1>
+      </div>
+      <div class="con-container">
+        <div class="contact-table">
+          <h2>Feel Free to ask anything</h2>
+          <form action='contact' class='main-form needs-validation' method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="text" id="fname"placeholder="Full Name" name="FullName" minlength="5" required>
+            <input type="email" id="femail"placeholder="Email" name="Email" required>
+            <textarea name="Message" id="fmessage" cols="30" rows="10" placeholder="Message" minlength="10" required></textarea>
+            <input type="submit" id="fsubButton"value="Text Message">
+          </form>
+        </div>
+        <div class="contact-map">
+          <h2>WE ARE HERE </h2>
+          <p><i class="fa-solid fa-location-dot" style="color: #ec2222;"></i>  little flower - Mathuradas Vasanji Rd</p>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d7539.513197863634!2d72.84438456977539!3d19.118330999999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0x3be7c82d360e1447%3A0x4cce626f705722b5!2sTHE%20LITTLE%20FLOWER&#39;S%20HIGH%20SCHOOL%20AND%20COLLEGE%2C%202%2FA%2C%20Sir%20Mathuradas%20Vasanji%20Rd%2C%20Gundavali%2C%20Andheri%20East%2C%20Mumbai%2C%20Maharashtra%20400069!3m2!1d19.118330999999998!2d72.8531393!5e0!3m2!1sen!2sin!4v1679910130446!5m2!1sen!2sin" width="600" height="300" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+    </div>
+  </section>
+
+
+  <script>
+    function showAlert() {
+
+    var name = document.getElementById("fname").value;
+    var email = document.getElementById("femail").value;
+    var message = document.getElementById("fmessage").value;
+
+     if (name && email && message) {
+        alert("Thank you for your message!");
+        }
+    }
+
+
+    document.getElementById("fsubButton").addEventListener("click", showAlert);
+  </script>
+  {% endblock %}

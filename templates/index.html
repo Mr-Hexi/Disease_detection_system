@@ -1,0 +1,859 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block content %}
+
+
+<style>
+  .hero-header {
+    background-color: #f0f0f0;
+    height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-image: url('{% static "images/banner1.jpg" %}');
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 1;
+
+  }
+
+  .hero-content {
+    background-color: white;
+    max-width: 800px;
+    width: 80%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    padding: 20px;
+    opacity: 0.9;
+  }
+
+  .hero-content .hero-title {
+    font-size: 48px;
+    margin-bottom: 24px;
+    font-weight: bold;
+    color: #333;
+  }
+
+  .hero-content .hero-subtitle {
+    font-size: 24px;
+    margin-bottom: 32px;
+    color: #666;
+  }
+
+  .hero-cta {
+    display: inline-block;
+    background-color: #333;
+    color: #fff;
+    font-size: 18px;
+    padding: 12px 24px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+
+  @media screen and (max-width: 768px) {
+    .hero-content {
+      top: 40%;
+    }
+
+    .hero-content .hero-title {
+      font-size: 36px;
+    }
+
+    .hero-content .hero-subtitle {
+      font-size: 20px;
+    }
+
+    .hero-cta {
+      font-size: 16px;
+      padding: 10px 20px;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .hero-content {
+      top: 50%;
+    }
+
+    .hero-content .hero-title {
+      font-size: 24px;
+      margin-bottom: 16px;
+    }
+
+    .hero-content .hero-subtitle {
+      font-size: 18px;
+      margin-bottom: 24px;
+    }
+
+    .hero-cta {
+      font-size: 14px;
+      padding: 8px 16px;
+    }
+  }
+
+  /* Adjust the height of the hero section for smaller screens */
+  @media screen and (max-width: 480px) {
+    .hero-header {
+      height: 700px;
+      width: 100%;
+    }
+  }
+
+  /* Increase the font size for larger screens */
+  @media screen and (min-width: 1200px) {
+    .hero-content .hero-title {
+      font-size: 64px;
+    }
+
+    .hero-content .hero-subtitle {
+      font-size: 28px;
+    }
+
+    .hero-cta {
+      font-size: 20px;
+      padding: 14px 28px;
+    }
+  }
+
+  /* Use flex-wrap to avoid overlapping on small screens */
+  @media screen and (max-width: 768px) {
+    .hero-content {
+      flex-wrap: wrap;
+    }
+
+    .hero-content .hero-title,
+    .hero-content .hero-subtitle {
+      width: 100%;
+      margin: 0;
+    }
+  }
+
+  /* Adjust the margin for the hero title and subtitle on small screens */
+  @media screen and (max-width: 480px) {
+    .hero-content .hero-title {
+      margin-bottom: 12px;
+    }
+
+    .hero-content .hero-subtitle {
+      margin-bottom: 16px;
+    }
+  }
+
+
+  .list-title {
+    font-family: Ubuntu, sans-serif !important;
+
+    text-align: center;
+
+    padding: 70px;
+  }
+
+  .list-title h2 {
+    font-size: 40px;
+    font-weight: 800;
+
+  }
+
+  .main-box {
+    padding: 10px;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 22px;
+    padding: 10px;
+    margin: auto;
+    width: 90%;
+    max-width: 1200px;
+    margin-bottom: 150px; 
+  }
+
+  .service {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 0;
+    padding: 25px;
+    background-color: #daf7f4;
+    box-shadow: 0 2px 4px #f3fbfa(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
+    border-radius: 10px;
+  }
+
+  .service:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .service h3 {
+    font-family: Ubuntu, sans-serif;
+    text-transform: uppercase;
+    font-size: 1.20rem;
+    font-weight: 600;
+    margin-top: 10px;
+    text-align: left;
+    color: #93d6d0;
+  }
+
+  .service p {
+    font-family: Ubuntu, sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    word-spacing: 1.8px;
+    margin: 20px 0;
+    padding-right: 30px;
+    color: #434040;
+    font-weight: 300;
+    text-align: left;
+  }
+
+  @media screen and (max-width: 758px) {
+    .services-grid {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .service h3 {
+      font-size: 1rem;
+      margin-top: 5px;
+    }
+
+    .service p {
+      font-size: 12px;
+      margin: 10px 0;
+    }
+  }
+
+  @media screen and (max-width: 530px) {
+    .list-title {
+      font-size: 24px;
+      padding: 50px 10px;
+    }
+
+    .services-grid {
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 12px;
+    }
+
+    .service {
+      padding: 15px;
+    }
+
+    .service h3 {
+      font-size: 0.9rem;
+      margin-top: 5px;
+    }
+
+    .service p {
+      font-size: 10px;
+      margin: 10px 0;
+      padding-right: 15px;
+    }
+  }
+
+  /* @import url('https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap'); 
+@import url('https://fonts.googleapis.com/css?family=Barlow:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap'); 
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700,800,300i,400i,500i,600i,700i,800i&display=swap');  */
+
+@media all{ 
+  * { 
+    box-sizing:  border-box;
+    margin: 0px; 
+    padding: 0px; 
+    border: none; 
+    outline: none;
+  } 
+
+  section { 
+    display: block;
+  } 
+
+  .research-section { 
+    position: relative; 
+    padding: 143px 0 254px;
+  } 
+
+  .bg-color-1 { 
+    background: #e9f8f8;
+  } 
+
+  *  { 
+    box-sizing: border-box;
+  } 
+
+  .elementor-element .elementor-widget-container { 
+    transition: background .3s,border .3s,border-radius .3s,box-shadow .3s,transform var(--e-transform-transition-duration,.4s);
+  } 
+
+  .elementor-element { 
+    --flex-direction: initial; 
+    --flex-wrap: initial; 
+    --justify-content: initial; 
+    --align-items: initial; 
+    --align-content: initial; 
+    --gap: initial; 
+    --flex-basis: initial; 
+    --flex-grow: initial; 
+    --flex-shrink: initial; 
+    --order: initial; 
+    --align-self: initial; 
+    flex-basis: var(--flex-basis); 
+    flex-grow: var(--flex-grow); 
+    flex-shrink: var(--flex-shrink); 
+    order: var(--order); 
+    align-self: var(--align-self);
+  } 
+
+  .elementor-element:where(.e-con-full, .elementor-widget) { 
+    flex-direction: var(--flex-direction); 
+    flex-wrap: var(--flex-wrap); 
+    justify-content: var(--justify-content); 
+    align-items: var(--align-items); 
+    align-content: var(--align-content); 
+    gap: var(--gap);
+  } 
+
+  .elementor-widget { 
+    position: relative;
+  } 
+
+  .elementor-widget-wrap > .elementor-element { 
+    width: 100%;
+  } 
+
+  .elementor-widget-wrap { 
+    position: relative; 
+    width: 100%; 
+    flex-wrap: wrap; 
+    align-content: flex-start;
+  } 
+
+  .elementor:not(.elementor-bc-flex-widget) .elementor-widget-wrap { 
+    display: flex;
+  } 
+
+  .elementor-column { 
+    position: relative; 
+    min-height: 1px; 
+    display: flex;
+  } 
+}     
+
+@media (min-width: 768px){ 
+  .elementor-column.elementor-col-100 { 
+    width: 100%;
+  } 
+}     
+
+@media all{ 
+  .elementor-section .elementor-container { 
+    display: flex; 
+    margin-right: auto; 
+    margin-left: auto; 
+    position: relative;
+  } 
+
+  .elementor-section { 
+    position: relative;
+  } 
+
+  .boxed_wrapper { 
+    position: relative; 
+    margin: 0 auto; 
+    overflow: hidden !important; 
+    width: 100%; 
+    min-width: 300px;
+  } 
+}     
+
+
+
+  .auto-container { 
+    position: static; 
+    max-width: 1200px; 
+    padding: 0px 15px; 
+    margin: 0 auto;
+  } 
+
+  *,:before,:after { 
+    box-sizing: border-box;
+  } 
+
+  * ,:after ,:before  { 
+    box-sizing: border-box;
+  } 
+
+  .centred { 
+    text-align: center;
+  } 
+
+  .sec-title { 
+    position: relative; 
+    display: block; 
+    margin-bottom: 60px;
+  } 
+
+  .row { 
+    display: -ms-flexbox; 
+    display: flex; 
+    -ms-flex-wrap: wrap; 
+    flex-wrap: wrap; 
+    margin-right: -15px; 
+    margin-left: -15px;
+  } 
+
+  .clearfix:after { 
+    display: block; 
+    clear: both; 
+    content: "";
+  } 
+
+
+
+  .sec-title h6  { 
+    display: inline-block; 
+    color:  #22b6af;
+    font-size: 16px; 
+    line-height: 26px; 
+    font-weight: 600; 
+    padding-left: 50px; 
+    text-transform: uppercase; 
+    margin-bottom: 13px;
+  } 
+
+  .sec-title.centred h6  { 
+    padding-right: 50px;
+  } 
+
+  .sec-title h6:before  { 
+    position: absolute; 
+    content: ''; 
+    background: url(https://laborex.smartdemowp.com/wp-content/themes/laborex/assets/images/icons/decor-2.png); 
+    width: 37px; 
+    height: 7px; 
+    left: 0px; 
+    top: 50%; 
+    transform: translateY(-50%);
+  } 
+
+  .sec-title.centred h6:before  { 
+    background: url(https://laborex.smartdemowp.com/wp-content/themes/laborex/assets/images/icons/decor-1.png);
+  } 
+
+  .sec-title.centred h6:after  { 
+    position: absolute; 
+    content: ''; 
+    background: url(https://laborex.smartdemowp.com/wp-content/themes/laborex/assets/images/icons/decor-2.png); 
+    width: 37px; 
+    height: 7px; 
+    right: 0px; 
+    top: 50%; 
+    transform: translateY(-50%);
+  } 
+
+  /* h2 { 
+    margin-top:    0; 
+    margin-bottom:    0.5rem; 
+    font-weight:  400; 
+    line-height:   1.2;
+    font-size:  2rem;
+    position: relative; 
+    font-family: 'Barlow', sans-serif; 
+    color: #142441; 
+    margin: 0px; 
+    transition: all 500ms ease;
+  }  */
+
+  .sec-title h2  { 
+    display: block; 
+    font-size: 42px; 
+    line-height: 48px; 
+    font-weight: 700; 
+    margin: 0px;
+  } 
+
+  .col-sm-12,.col-md-6,.col-lg-6 { 
+    position: relative; 
+    width: 100%; 
+    padding-right: 15px; 
+    padding-left: 15px;
+  } 
+  
+
+@media (min-width: 576px){ 
+  .col-sm-12 { 
+    -ms-flex: 0 0 100%; 
+    flex: 0 0 100%; 
+    max-width: 100%;
+  } 
+}     
+
+@media (min-width: 768px){ 
+  .col-md-6 { 
+    -ms-flex: 0 0 50%; 
+    flex: 0 0 50%; 
+    max-width: 50%;
+  } 
+}     
+
+@media (min-width: 992px){ 
+  .col-lg-6 { 
+    -ms-flex: 0 0 50%; 
+    flex: 0 0 50%; 
+    max-width: 50%;
+  } 
+}     
+
+@media all{ 
+  .animated { 
+    -webkit-animation-duration: 1s; 
+    animation-duration: 1s; 
+    -webkit-animation-fill-mode: both; 
+    animation-fill-mode: both;
+  } 
+
+  .fadeInLeft { 
+    -webkit-animation-name: fadeInLeft; 
+    animation-name: fadeInLeft;
+  } 
+
+  .animated { 
+    animation-duration: 1.25s;
+  } 
+
+  .research-block-one .inner-box  { 
+    position: relative; 
+    display: block; 
+    background: #fff; 
+    border-radius: 20px; 
+    padding: 32px 40px 40px; 
+    margin-bottom: 30px; 
+    transition: all 500ms ease;
+  } 
+
+  .research-block-one .inner-box:hover  { 
+    box-shadow: 0 10px 30px rgba(0,0,0,.1);
+  } 
+
+  .auto-container h4 { 
+    display: block; 
+    margin-top:     0; 
+    margin-bottom:     0.5rem; 
+    font-weight:  700;
+    line-height:  26px; 
+    font-size:  20px; 
+    position:  relative; 
+    font-family:  'Barlow', sans-serif; 
+    color:  #142441; 
+    margin:  0px; 
+    transition:  all 500ms ease;
+  } 
+
+  .research-block-one .inner-box h4  { 
+    display: block; 
+    font-size: 20px; 
+    line-height: 26px; 
+    font-weight: 700; 
+    margin-bottom: 7px;
+  } 
+
+  .research-block-one .inner-box span  { 
+    position: relative; 
+    display: block; 
+    margin-bottom: 16px;
+  } 
+
+  p { 
+    margin-top:  0; 
+    margin-bottom:  1rem;
+    position: relative; 
+    font-family: 'Open Sans', sans-serif; 
+    color: #848484; 
+    font-weight: 400; 
+    margin: 0px; 
+    transition: all 500ms ease;
+  } 
+
+  .research-block-one .inner-box p  { 
+    display: block; 
+    margin-bottom: 22px;
+  } 
+
+  ul { 
+    box-sizing:   border-box;
+    margin-top:  0; 
+    margin-bottom:  1rem;
+    list-style: none; 
+    padding: 0px; 
+    margin: 0px;
+  } 
+
+  .research-block-one .inner-box .other-option  { 
+    position: absolute; 
+    right: 40px; 
+    bottom: 40px;
+  } 
+
+
+
+  .theme-btn-two { 
+    position: relative; 
+    display: inline-block; 
+    font-size: 14px; 
+    line-height: 25px; 
+    font-family: 'Open Sans', sans-serif; 
+    font-weight: 700; 
+    color: #142441 !important; 
+    background: #f2f3f5; 
+    text-align: center; 
+    border-radius: 30px; 
+    padding: 7.5px 22px; 
+    z-index: 1; 
+    transition: all 500ms ease;
+  } 
+
+  a  { 
+    box-shadow: none; 
+    text-decoration: none;
+  } 
+
+  .research-block-one .inner-box .theme-btn-two  { 
+    padding: 7.5px 27px;
+  } 
+
+  .btn-box a:hover { 
+    color:  #0056b3; 
+    text-decoration:  none; 
+    outline: none;
+  } 
+
+  .theme-btn-two:hover { 
+    background:  #22b6af;
+    color: #fff !important;
+  } 
+
+  .research-block-one .inner-box .other-option li  { 
+    position: relative; 
+    display: inline-block; 
+    float: left; 
+    margin-right: 10px;
+  } 
+
+  .research-block-one .inner-box .other-option li:last-child  { 
+    margin: 0!important;
+  } 
+
+  .research-block-one .inner-box .other-option li a  { 
+    position: relative; 
+    display: inline-block; 
+    font-size: 18px; 
+    color: #aaabad; 
+    width: 40px; 
+    height: 40px; 
+    line-height: 40px; 
+    border: 1px solid #e5e5e5; 
+    border-radius: 4px; 
+    text-align: center; 
+    z-index: 1;
+  } 
+
+  .research-block-one .inner-box .other-option li a:hover  { 
+    color:  #fff;
+    background: #22b6af; 
+    border-color: #22b6af;
+  } 
+
+  [class^="icon-"] { 
+    font-family: icomoon!important; 
+    speak: never; 
+    font-style: normal; 
+    font-weight: 400; 
+    font-variant: normal; 
+    text-transform: none; 
+    line-height: 1; 
+    -webkit-font-smoothing: antialiased; 
+    -moz-osx-font-smoothing: grayscale;
+  } 
+
+  .icon-16:before { 
+    content: "\e90f";
+  } 
+
+  .icon-17:before { 
+    content: "\e910";
+  } 
+
+
+  .footer-distributed {
+
+    margin-top: 0;
+}
+}     
+
+
+
+
+</style>
+
+<div class="hero-header">
+
+
+  <div class="hero-content">
+    <h1 class="hero-title">Revolutionizing Disease Detection with AI</h1>
+    <div class="hero_p">
+      <p class="hero-subtitle">Our AI-powered tool makes disease detection faster, easier, and more accurate. Detect
+        brain tumor, pneumonia, malaria, and more with ease.</p>
+    </div>
+    <a href="#link1" id="hero_btn" class="hero-cta scrollLink" onclick="scrollFunction1()">Get Started</a>
+  </div>
+</div>
+
+
+
+
+<div class="main-box">
+  <div class="list-title" id="link1">
+    <h2>Medical Services</h2>
+  </div>
+  <div class="gridbox">
+
+
+    <div class="services-grid">
+
+      <div class="service">
+        <a href="./braintumor">
+
+          <h3>Brain tumor Detection</h3>
+          <p>This AI can quickly and accurately detect brain tumors in under a minute, providing faster diagnosis and
+            treatment for patients.</p>
+        </a>
+      </div>
+
+      <div class="service">
+        <a href="./pneumonia">
+
+          <h3>Pneumonia Detection</h3>
+          <p>Our advanced system utilizes chest X-ray images to detect signs of pneumonia, aiding doctors in making faster and more accurate diagnoses.</p>
+        </a>
+      </div>
+
+      <div class="service">
+        <a href="./retinal">
+
+          <h3>Retinal Disorders Detection</h3>
+          <p>Our innovative AI-powered technology can effectively analyze retinal scans to identify signs of various eye disorders, such as age-related macular degeneration and diabetic retinopathy, enabling earlier intervention and treatment.</p>
+        </a>
+      </div>
+
+      <!-- <div class="service">
+        <a href="./braintumor">
+
+          <h3>Brain tumor Detection</h3>
+          <p>Brain tumor detection using AI involves the analysis of medical imaging data to accurately identify and locate abnormal growths within the brain.</p>
+        </a>
+      </div>
+ 
+      <div class="service">
+        <a href="./braintumor">
+
+          <h3>Brain tumor Detection</h3>
+          <p>Brain tumor detection using AI involves the analysis of medical imaging data to accurately identify and locate abnormal growths within the brain.</p>
+        </a>
+      </div>
+ 
+      <div class="service">
+        <a href="./braintumor">
+          <h3>Brain tumor Detection</h3>
+          <p>Brain tumor detection using AI involves the analysis of medical imaging data to accurately identify and locate abnormal growths within the brain.</p>
+        </a>
+      </div> -->
+
+    </div>
+  </div>
+</div>
+
+<section class="research-section bg-color-1">
+  <div class="pattern">
+    <div class="pattern-1 "
+      style="background-image: url(https://laborex.smartdemowp.com/wp-content/uploads/2021/05/shape-6.png);"></div>
+    <div class="pattern-2 "
+      style="background-image: url(https://laborex.smartdemowp.com/wp-content/uploads/2021/05/shape-7.png);"></div>
+  </div>
+  <div class="auto-container">
+    <div class="sec-title centred">
+      <!-- <h6>Research Topic</h6> -->
+      <h2>Related <br>Research Papers</h2>
+    </div>
+    <div class="row clearfix">
+      <div class="col-lg-6 col-md-6 col-sm-12 research-block">
+        <div class="research-block-one wow fadeInLeft animated animated" data-wow-delay="00ms"
+          data-wow-duration="1500ms"
+          style="visibility: visible; animation-duration: 1500ms; animation-delay: 0ms; animation-name: fadeInLeft;">
+          <div class="inner-box">
+            <h4>Functional Characterization of a Metallothionein Gene (CsMT4) in Cucumber.</h4>
+            <span>Duan Ling, et al., Horticultural Plant Journal, 2019</span>
+            <p>Excepteur sint ocecat pro dent sunt in culpa.qui officia deserunt mollit anim id est.</p>
+            <div class="btn-box"><a href="https://laborex.smartdemowp.com/research/future-member/"
+                class="theme-btn-two">Read More</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-12 research-block">
+        <div class="research-block-one wow fadeInLeft animated animated" data-wow-delay="00ms"
+          data-wow-duration="1500ms"
+          style="visibility: visible; animation-duration: 1500ms; animation-delay: 0ms; animation-name: fadeInLeft;">
+          <div class="inner-box">
+            <h4>Model Modification of Participatory of Community Asset Development Research.</h4>
+            <span>Duan Ling, et al., Horticultural Plant Journal, 2019</span>
+            <p>Excepteur sint ocecat pro dent sunt in culpa.qui officia deserunt mollit anim id est.</p>
+            <div class="btn-box"><a href="https://laborex.smartdemowp.com/research/future-member/"
+                class="theme-btn-two">Read More</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-12 research-block">
+        <div class="research-block-one wow fadeInLeft animated animated" data-wow-delay="00ms"
+          data-wow-duration="1500ms"
+          style="visibility: visible; animation-duration: 1500ms; animation-delay: 0ms; animation-name: fadeInLeft;">
+          <div class="inner-box">
+            <h4>Effect of Benzoin Resin Fumes on Indoor Environmental.
+            </h4>
+            <span>Duan Ling, et al., Horticultural Plant Journal, 2019</span>
+            <p>Excepteur sint ocecat pro dent sunt in culpa.qui officia deserunt mollit anim id est.</p>
+            <div class="btn-box"><a href="https://laborex.smartdemowp.com/research/future-member/"
+                class="theme-btn-two">Read More</a></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-12 research-block">
+        <div class="research-block-one wow fadeInLeft animated animated" data-wow-delay="00ms"
+          data-wow-duration="1500ms"
+          style="visibility: visible; animation-duration: 1500ms; animation-delay: 0ms; animation-name: fadeInLeft;">
+          <div class="inner-box">
+            <h4>Screening of Sixteen Commonly Consumed Green Leafy Vegetables for Carotenoids.</h4>
+            <span>Duan Ling, et al., Horticultural Plant Journal, 2019</span>
+            <p>Excepteur sint ocecat pro dent sunt in culpa.qui officia deserunt mollit anim id est.</p>
+            <div class="btn-box"><a href="https://laborex.smartdemowp.com/research/future-member/"
+                class="theme-btn-two">Read More</a></div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+{% endblock %}
+{% with active_page="home" %}
+{% endwith %}

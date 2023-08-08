@@ -1,0 +1,187 @@
+<!-- {% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon"> 
+  <title>Login</title>
+  <link rel="stylesheet" href="style.css">
+
+</head>
+  <style>
+    .container {
+  width: 300px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+h2 {
+  color: #333;
+}
+
+input[type="text"], input[type="password"] {
+  padding: 8px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+input[type="submit"] {
+  padding: 8px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+  </style>
+<body>
+  <div class="container">
+    <h2>Login</h2>
+    <form id="loginForm" method="post">
+      {% csrf_token %}
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required><br><br>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required><br><br>
+      <input type="submit" value="Login">
+    </form>
+  </div>
+
+  <script> 
+  // Validate the login form
+document.getElementById("loginForm").addEventListener("submit", function(event) {
+  event.preventDefault(); // Prevent form submission
+
+  var username = document.getElementById("username").value;
+  var password = document.getElementById("password").value;
+
+  // Perform necessary validation checks
+  if (username === "" || password === "") {
+    alert("Please enter both username and password.");
+    return;
+  }
+
+  // Submit the form if validation passes
+  this.submit();
+});
+
+  </script>
+</body>
+</html> -->
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login Page</title>
+</head>
+<style>
+ @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Ubuntu:wght@200;300;400;500;600;700&display=swap');
+
+html, body {
+
+  height: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  align-items: center;
+  font-family: Ubuntu, sans-serif;
+  
+}
+
+.container {
+  width: 254px;
+  height: 233px;
+  padding: 40px;
+  background-color: #f3fbfa;
+  border-radius: 0px;
+  box-shadow: 0 4px 10px rgba(165, 234, 226, 0.3);
+}
+
+.container h2 {
+  text-align: center;
+  margin-top: 2px;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.container form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container input[type="text"],
+.container input[type="password"] {
+  margin-bottom: 20px;
+  padding: 12px;
+  width: 100%;
+  max-width: 300px;
+  border: none;
+    background-color: white;
+}
+
+.container input:focus,
+    .container textarea:focus {
+      outline: none;
+    }
+
+
+  input[type="submit"] {
+  padding: 12px;
+  width: 100%;
+  max-width: 200px;
+  background-color: rgba(147, 214, 208, 1);
+  color: white;
+  border: none;
+  /* border-radius: 5px; */
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: rgba(147, 214, 208, 0.7);
+}
+
+</style>
+<body>
+  <div class="container">
+    <h2>Login</h2>
+    <form id="loginForm" method="post">
+      {% csrf_token %}
+      <input type="text" placeholder="Username" name="username" id="username" required>
+      <input type="password" placeholder="Password" name="password" id="password" required>
+      <!-- <button type="submit" >Login</button> -->
+      <input type="submit" value="Login">
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function(event) {
+  event.preventDefault(); // Prevent form submission
+
+  var username = document.getElementById("username").value;
+  var password = document.getElementById("password").value;
+
+  // Perform necessary validation checks
+  if (username === "" || password === "") {
+    alert("Please enter both username and password.");
+    return;
+  }
+
+  // Submit the form if validation passes
+  this.submit();
+});
+
+  </script>
+</body>
+</html>
+

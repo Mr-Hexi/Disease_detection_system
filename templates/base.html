@@ -1,0 +1,675 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.2">
+  <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon"> 
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+  <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon"> 
+
+  <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+  <!-- <link href="http://fonts.googleapis.com/css?family=Cookie" rel="stylesheet" type="text/css"> -->
+  <link rel="stylesheet" href="style.css">
+
+  <title>Healthcare </title>
+</head>
+
+<style>
+  /* @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap'); */
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200@300@400@500@600&family=Ubuntu:wght@400&display=swap');
+  html {
+    scroll-behavior: smooth;
+  }
+  * {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: Ubuntu, sans-serif;
+  }
+
+  body {
+    /* min-height: 100vh; */
+    background-color: #f3fbfa;
+  }
+
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    height: 60px;
+    background: #ffffff;
+    /* box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); */
+    border-bottom: 1px solid rgba(145, 145, 145, 0.1);
+    z-index: 99;
+  }
+
+  nav .navbar {
+    height: 100%;
+    max-width: 1290px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: auto;
+    /* background: red; */
+    padding: 0 50px;
+  }
+
+  .navbar .logo img {
+    width: 100px;
+    height: auto;
+    border-radius: 25px;
+    transition: all 0.3s ease 0s;
+  }
+
+  nav .navbar .nav-links {
+    line-height: 70px;
+    /* height: 100%; */
+  }
+
+  nav .navbar .links {
+    display: flex;
+  }
+
+  nav .navbar .links li {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+    padding: 0 14px;
+
+  }
+
+  nav .navbar .links li a {
+    /* height: 100%; */
+    font-family: Ubuntu, sans-serif;
+    margin: auto;
+    text-decoration: none;
+    white-space: nowrap;
+    color: #000000;
+    font-size: 17px;
+    font-weight: 400;
+    transition: all 0.3s ease 0s;
+  }
+
+  nav .navbar .links li a:hover,
+  nav .navbar .links li a.active {
+    color: #6d9f9b;
+  }
+/*   
+.active {
+    color: #6d9f9b;
+  } */
+
+
+  .links li:hover .htmlcss-arrow,
+  .links li:hover .js-arrow {
+    transform: rotate(180deg);
+  }
+
+  nav .navbar .links li .arrow {
+    /* background: red; */
+    height: 100%;
+    width: 22px;
+    line-height: 70px;
+    text-align: center;
+    display: inline-block;
+    color: #000000;
+    transition: all 0.3s ease;
+  }
+
+  nav .navbar .links li .sub-menu {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    line-height: 40px;
+    background: #ffffff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    border-radius: 0 0 4px 4px;
+    display: none;
+    z-index: 2;
+  }
+
+  /* nav .navbar .nav_links .links li a:hover {
+        color: #6d9f9b;
+    } */
+
+  .links a:hover {
+    color: rgba(147, 214, 208, 0.7);
+    ;
+  }
+
+  nav .navbar .links li:hover .htmlCss-sub-menu {
+    display: block;
+  }
+
+  .navbar .links li .sub-menu li {
+    padding: 0 22px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .navbar .links li .sub-menu a {
+    color: #000000;
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+  .navbar .links li .sub-menu .more-arrow {
+    line-height: 40px;
+  }
+
+  .contbtn {
+    padding: 9px 25px;
+    background-color: rgba(147, 214, 208, 1);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+
+  }
+
+  .contbtn:hover {
+    background-color: rgba(147, 214, 208, 0.7);
+  }
+
+
+  .logoutbtn {
+    margin-left: 5px;
+      padding: 9px 25px;
+      background-color: rgba(247, 247, 247, 1);
+      color: rgb(147, 214, 208);
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease 0s;
+
+    }
+    
+    .logoutbtn:hover {
+      background-color: rgba(247, 247, 247, 0.7);
+    }
+
+  .navbar .nav-links .sidebar-logo {
+    display: none;
+  }
+
+  .navbar .bx-menu {
+    display: none;
+  }
+
+
+
+  @media (max-width:920px) {
+    nav .navbar {
+      max-width: 100%;
+      padding: 0 25px;
+    }
+
+    /* nav .navbar .logo {
+    font-size: 27px;
+  } */
+    nav .navbar .links li {
+      padding: 0 10px;
+      white-space: nowrap;
+    }
+
+    nav .navbar .links li a {
+      font-size: 15px;
+    }
+  }
+
+  @media (max-width:800px) {
+
+    /*nav{
+    /* position: relative; 
+  }*/
+    .navbar .bx-menu {
+      display: block;
+    }
+
+    nav .navbar .nav-links {
+      position: fixed;
+      top: 0;
+      left: -100%;
+      display: block;
+      max-width: 270px;
+      height: 100%;
+      width: 100%;
+      background: #ffffff;
+      line-height: 40px;
+      padding: 20px;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+      transition: all 0.5s ease;
+      z-index: 1000;
+    }
+
+    .navbar .nav-links .sidebar-logo {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .sidebar-logo .logo-name {
+      font-size: 25px;
+      color: #000000;
+    }
+
+    .sidebar-logo i,
+    .navbar .bx-menu {
+      font-size: 25px;
+      color: #000000;
+    }
+
+    nav .navbar .links {
+      display: block;
+      margin-top: 20px;
+    }
+
+    nav .navbar .links li .arrow {
+      line-height: 40px;
+    }
+
+    nav .navbar .links li {
+      display: block;
+    }
+
+    nav .navbar .links li .sub-menu {
+      position: relative;
+      top: 0;
+      box-shadow: none;
+      display: none;
+    }
+
+    nav .navbar .links li .sub-menu li {
+      border-bottom: none;
+
+    }
+
+    .navbar .links li .sub-menu .more-sub-menu {
+      display: none;
+      position: relative;
+      left: 0;
+    }
+
+    .navbar .links li .sub-menu .more-sub-menu li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .links li:hover .htmlcss-arrow,
+    .links li:hover .js-arrow {
+      transform: rotate(0deg);
+    }
+
+    .navbar .links li .sub-menu .more-sub-menu {
+      display: none;
+    }
+
+    .navbar .links li .sub-menu .more span {
+      /* background: red; */
+      display: flex;
+      align-items: center;
+      /* justify-content: space-between; */
+    }
+
+    .links li .sub-menu .more:hover .more-sub-menu {
+      display: none;
+    }
+
+    nav .navbar .links li:hover .htmlCss-sub-menu,
+    nav .navbar .links li:hover .js-sub-menu {
+      display: none;
+    }
+
+    .navbar .nav-links.show1 .links .htmlCss-sub-menu,
+    .navbar .nav-links.show3 .links .js-sub-menu,
+    .navbar .nav-links.show2 .links .more .more-sub-menu {
+      display: block;
+    }
+
+    .navbar .nav-links.show1 .links .htmlcss-arrow,
+    .navbar .nav-links.show3 .links .js-arrow {
+      transform: rotate(180deg);
+    }
+
+    .navbar .nav-links.show2 .links .more-arrow {
+      transform: rotate(90deg);
+    }
+  }
+
+  @media (max-width:370px) {
+    nav .navbar .nav-links {
+      max-width: 100%;
+    }
+  }
+
+/* FOOTER */
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+
+}
+
+@media (max-height:800px) {
+    footer {
+        position: static;
+    }
+    header {
+        padding-top: 40px;
+    }
+}
+
+.footer-distributed {
+    position: inherit;
+  background-color: #daf7f4;
+    box-sizing: border-box;
+    width: 100%;
+    text-align: left;
+    font: bold 16px sans-serif;
+    padding: 50px 50px 60px 50px;
+    margin-top: 160px;
+}
+
+.footer-distributed .footer-left, .footer-distributed .footer-center, .footer-distributed .footer-right {
+    display: inline-block;
+    vertical-align: top;
+}
+
+/* Footer left */
+
+.footer-distributed .footer-left {
+    width: 30%;
+}
+
+.footer-distributed h3 {
+    color: black;
+    font: normal 36px Ubuntu ;
+    font-weight: 400;
+    font-size: 36px;
+    margin: 0;
+}
+
+
+.footer-distributed h3 span {
+  color: #93d6d0;
+  font-weight: 700;
+}
+
+/* Footer links */
+
+.footer-distributed .footer-links {
+  
+    color: #000000;
+    margin: 20px 0 12px;
+}
+
+.footer-distributed .footer-links a {
+    display: inline-block;
+    line-height: 1.8;
+    text-decoration: none;
+    color: inherit;
+}
+
+.footer-distributed .footer-company-name {
+    color: #8f9296;
+    font-size: 14px;
+    font-weight: normal;
+    margin: 0;
+}
+
+/* Footer Center */
+
+.footer-distributed .footer-center {
+    width: 35%;
+}
+
+.footer-distributed .footer-center i {
+    background-color: #33383b;
+    color: #ffffff;
+    font-size: 25px;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 42px;
+    margin: 10px 15px;
+    vertical-align: middle;
+}
+
+.footer-distributed .footer-center i.fa-envelope {
+    font-size: 17px;
+    line-height: 38px;
+}
+
+.footer-distributed .footer-center p {
+    display: inline-block;
+    color: #000000;
+    vertical-align: middle;
+    margin: 0;
+}
+
+.footer-distributed .footer-center p span {
+    display: block;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 2;
+}
+
+.footer-distributed .footer-center p a {
+    color: #000000;
+    text-decoration: none;
+    ;
+}
+
+/* Footer Right */
+
+.footer-distributed .footer-right {
+    width: 30%;
+}
+
+.footer-distributed .footer-company-about {
+    line-height: 20px;
+    color: #92999f;
+    font-size: 13px;
+    font-weight: normal;
+    margin: 0;
+}
+
+.footer-distributed .footer-company-about span {
+    display: block;
+    color: #000000;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.footer-distributed .footer-icons {
+    margin-top: 25px;
+}
+
+.footer-distributed .footer-icons a {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    background-color: #33383b;
+    border-radius: 2px;
+    font-size: 20px;
+    color: #ffffff;
+    text-align: center;
+    line-height: 35px;
+    padding-top: 5px;
+    margin-right: 3px;
+    margin-bottom: 5px;
+}
+
+.footer-distributed .footer-icons a:hover {
+    background-color: #3F71EA;
+}
+
+.footer-links a:hover {
+    color: #3F71EA;
+}
+
+@media (max-width: 880px) {
+    .footer-distributed .footer-left, .footer-distributed .footer-center, .footer-distributed .footer-right {
+        display: block;
+        width: 100%;
+        margin-bottom: 40px;
+        text-align: center;
+    }
+    .footer-distributed .footer-center i {
+        margin-left: 0;
+    }
+} 
+
+</style>
+  <body>
+
+<nav>
+  <div class="navbar">
+    <i class='bx bx-menu'></i>
+    <div class="logo"> 
+      <a href="/#">
+        <img src="{% static 'images/logo.jpg' %}" alt="logo">
+      </a></div>
+
+    <div class="nav-links">
+      <div class="sidebar-logo">
+        <span class="logo-name">AI Health</span>
+        <i class='bx bx-x'></i>
+      </div>
+      <ul class="links">
+        <!-- <li class="active"><a href="#" >Home</a></li> -->
+        <li >
+          <a {% if active_page == "home" %}class="active"{% endif %} href="/">Home</a>
+        </li>
+        <li>
+          <!-- <a href="#link1" >Services</a> -->
+          <li ><a {% if active_page == "services" %} class="active"{% endif %} href="#link1">Services</a>
+          <i class='bx bxs-chevron-down htmlcss-arrow arrow  '></i>
+          <ul class="htmlCss-sub-menu sub-menu">
+            <li><a href="./braintumor">Brain Tumor</a></li>
+            <li><a href="./pneumonia">Pneumonia</a></li>
+            <li><a href="./retinal">Retinal Disorders</a></li>
+        </li>
+      </ul>
+      </li>
+      <!-- <li><a href="#footerlink">About</a></li> -->
+      <li><a {% if active_page == "profile" %}class="active"{% endif %} href="/profile">Profile</a></li>
+
+      </ul>
+    </div>
+    <div class="cont-box">
+      <a class="cta" href="./contact"><Button class="contbtn">Contact </Button></a>
+      {% if active_page == "profile" %}
+        <a class="cta" href="./logout"><Button class="logoutbtn"><i class='bx bx-log-out'></i>Log out</Button></a>
+      {% endif %}
+    </div>
+  </div>
+  </div>
+</nav>
+
+
+{% block content %}
+
+{% endblock %}
+
+
+<footer class="footer-distributed" id="footerlink">
+
+<div class="footer-left">
+    <h3><span>AI Health</span></h3>
+
+    <p class="footer-links">
+        <a href="#">Home</a>
+        <!-- |
+        <a href="#footerlink">Services</a> -->
+        |
+        <a href="./contact">Contact</a>
+        | 
+        <a href="./profile">Profile</a>
+        | 
+    </p>
+
+    <p class="footer-company-name">Copyright © 2023 <strong>AI HEALTH</strong> All rights reserved</p>
+</div>
+
+<div class="footer-center">
+    <div>
+        <i class="fa fa-map-marker"></i>
+        <p><span>Andheri East</span>
+            Mumbai</p>
+    </div>
+
+    <div>
+        <i class="fa fa-phone"></i>
+        <p>+91 968**0**88</p>
+    </div>
+    <div>
+        <i class="fa fa-envelope"></i>
+        <p><a href="mailto:abuhuzaifakurla@gmail.com">AIHEALTH@gmail.com</a></p>
+    </div>
+</div>
+<div class="footer-right">
+    <p class="footer-company-about">
+        <span>About the company</span>
+        <strong>AI HEALTH</strong> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deleniti, illo!
+        Lorem.
+        Lorem, ipsum dolor.
+        Lorem ipsum dolor sit amet consectetur adipisicing.
+    </p>
+    <div class="footer-icons">
+        <a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook"></i></a>
+        <a href="https://www.linkedin.com/in/" target="_blank"><i class="fa fa-linkedin"></i></a>
+        <a href="https://twitter.com/" target="_blank"><i class="fa fa-twitter"></i></a>
+    </div>
+</div>
+</footer>
+
+
+
+
+<script>
+
+    // cont-box open close js code
+
+
+    let navbar = document.querySelector(".navbar");
+
+
+// sidebar open close js code
+let navLinks = document.querySelector(".nav-links");
+let menuOpenBtn = document.querySelector(".navbar .bx-menu");
+let menuCloseBtn = document.querySelector(".nav-links .bx-x");
+menuOpenBtn.onclick = function () {
+  navLinks.style.left = "0";
+}
+menuCloseBtn.onclick = function () {
+  navLinks.style.left = "-100%";
+}
+
+
+// sidebar submenu open close js code
+let htmlcssArrow = document.querySelector(".htmlcss-arrow");
+htmlcssArrow.onclick = function () {
+  navLinks.classList.toggle("show1");
+}
+
+</script>
+
+
+
+
+</body>
+
+</html>

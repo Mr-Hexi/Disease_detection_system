@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+
+{% block content %}
+<style>
+.hospital-name {
+	margin-top: 60px;
+	text-align: center;
+	font-size: 35px;
+	padding: 20px 0px 20px 0px;
+	font-weight: bold;
+	color: #333;
+	margin-bottom: 20px;
+	border-bottom: 0.5px solid #ccc;
+}
+
+
+    main {
+      margin: 2rem;
+    }
+    
+    .Ph2 h2 {
+      font-size: 2rem;
+      padding-bottom: 10px;
+    }
+    
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      border: 0.5px solid #e9e9e9;
+    }
+    
+    th, td {
+      text-align: left;
+      padding: 0.5rem;
+      border-bottom: 1px solid #ddd;
+    }
+    
+    thead th {
+      background-color: #daf7f4;
+      color: #000000;
+      
+    }
+    
+    tfoot td {
+      background-color: #f2f2f2;
+    }
+    
+    tfoot td:last-child {
+      font-weight: bold;
+    }
+
+</style>
+<body>
+	
+
+	<div class="hospital-name">{{first_name}}</div>
+	<main>
+	  <div class="Ph2">
+		<h2 >Patient History</h2>
+	</div>
+	  <table>
+		<thead>
+		  <tr>
+			<th>Date</th>
+			<th>Patient ID</th>
+			<th>Test Type</th>
+			<th>Result</th>
+		  </tr>
+		</thead>
+		<tbody>
+			{% for report in reports %}
+		  <tr>
+			<td>{{ report.date }}</td>
+			<td>{{ report.patient_id }}</td>
+			<td>{{ report.test_type }}</td>
+			<td>{{ report.results }}</td>
+		  </tr>
+		  {% endfor %}
+		</tbody>
+	  </table>
+	</main>
+    {% endblock %}

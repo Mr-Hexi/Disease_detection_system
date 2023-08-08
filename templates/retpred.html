@@ -1,0 +1,191 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+
+{% block content %}
+
+<style>
+  .container {
+
+        margin: 70px auto 0;
+        max-width: 700px;
+        width: 100%;
+        background-color: #fff;
+        padding: 25px 30px;
+        border-radius: 5px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+   
+      }
+
+
+    
+	.container .title {
+        text-align: center;
+        color: black;
+        font-size: 25px;
+        font-weight: 600;
+        position: relative;
+        font-size: 50px;
+        padding-bottom: 25px;
+    }
+
+
+    .container h1, h2 {
+      text-align: center;
+	  margin: 10px;
+    }
+    
+    img {
+      display: block;
+      margin: 0 auto;
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      object-position: center;
+      /* border-radius: 10%; */
+      /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); */
+    }
+    
+	table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-top: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+th, td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  vertical-align: top;
+}
+
+th {
+  background-color:  #f7f5f5;
+  font-weight: bold;
+  width: 40%;
+  text-transform: uppercase;
+  color: #555;
+}
+
+td {
+  background-color: #fff;
+  color: #333;
+  padding-left: 5%;
+}
+
+tr:hover {
+  background-color: #f5f5f5;
+}
+
+@media screen and (max-width: 600px) {
+  table {
+    border-radius: 0;
+    box-shadow: none;
+  }
+  
+  th, td {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+  
+  th {
+    background-color: #fff;
+    color: #333;
+    border: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-transform: capitalize;
+  }
+  
+  td {
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  tr:nth-child(even) td {
+    background-color: #fff;
+  }
+}
+
+    .result {
+      margin: 20px auto;
+      text-align: center;
+      padding: 20px;
+      border: 1px solid #ddd;
+      text-align: center;
+      font-size: 25px;
+      font-weight: bold;
+      border-radius: 10px; /* added */
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* added */
+      color: #fff; 
+      background-color: rgba(147, 214, 208, 1);
+      display: block; /* added */
+      width: 100%;
+    }
+    
+    .details {
+
+      margin: 20px auto; 
+      
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      background-color: #f5f5f5;
+    }
+    
+    .details h2 {
+      margin-top: 0;
+    }
+    
+    .details p {
+      line-height: 1.5;
+    }
+
+
+  </style>
+  <div class="container">
+	<div class="title">Retinal Disease Detection</div>
+    <!-- <h1>Pathology Report</h1> -->
+    
+   <img src="{{filename}}" alt="image">
+    
+    <table>
+      <tr>
+        <th>Patient ID:</th>
+        <td>{{patient_id}}</td>
+      </tr>
+      <tr>
+        <th>Name:</th>
+        <td>{{fn}}</td>
+      </tr>
+      <tr>
+        <th>Age:</th>
+        <td>{{age}}</td>
+      </tr>
+      <tr>
+        <th>Gender:</th>
+        <td>{{gender}}</td>
+      </tr>
+    </table>
+    
+    <div class="result">
+      REPORT : {{data}}
+    </div>
+    
+    <!-- <div class="details">
+      <h2>About the Disease</h2>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi ea at libero ad nam blanditiis laborum facilis rerum, facere ab eum adipisci quae quasi neque voluptas, repellat autem veniam hic!</p>
+      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit incidunt ratione officiis doloribus itaque, vel praesentium dolorum aspernatur? Maxime voluptatibus accusamus ut sequi laboriosam totam reiciendis, autem ipsam architecto, asperiores ipsa porro. Temporibus impedit vitae harum obcaecati iure, cupiditate culpa.</p>
+    </div>
+     -->
+  </div>
+
+
+{% endblock %}

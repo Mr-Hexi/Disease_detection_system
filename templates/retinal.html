@@ -1,0 +1,440 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+
+{% block content %}
+
+<style>
+  .container {
+        /* position: absolute;
+        top: 50%;
+        left: 50%; */
+        margin: 80px auto 0;
+        max-width: 700px;
+        width: 100%;
+        background-color: #fff;
+        padding: 25px 30px;
+        border-radius: 5px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+        /* margin-top: 70px; */
+        
+    }
+
+    .container .title {
+        text-align: center;
+        color: black;
+        font-size: 25px;
+        font-weight: 600;
+        position: relative;
+        font-size: 50px;
+        padding-bottom: 25px;
+    }
+
+
+
+    .content form .user-details {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin: 20px 0 12px 0;
+    }
+
+    form {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    form .user-details .input-box {
+        margin-bottom: 15px;
+        width: calc(100% / 2 - 20px);
+    }
+
+    form .input-box span.details {
+        display: block;
+        font-weight: 500;
+        margin-bottom: 5px;
+    }
+
+    .user-details .input-box input {
+        height: 45px;
+        width: 100%;
+        outline: none;
+        font-size: 16px;
+        border-radius: 5px;
+        padding-left: 15px;
+        border: 1px solid #ccc;
+        border-bottom-width: 2px;
+        transition: all 0.3s ease;
+    }
+
+    .user-details .input-box input:focus,
+    .user-details .input-box input:valid {
+        border-color: #ccefeb;;
+    }
+
+    form .gender-details .gender-title {
+        font-size: 20px;
+        font-weight: 500;
+    }
+
+    form .category {
+        display: flex;
+        width: 80%;
+        margin: 14px 0;
+        justify-content: space-between;
+    }
+
+    form .category label {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    form .category label .dot {
+        height: 18px;
+        width: 18px;
+        border-radius: 50%;
+        margin-right: 10px;
+        background: #d9d9d9;
+        border: 5px solid transparent;
+        transition: all 0.3s ease;
+    }
+
+    #dot-1:checked~.category label .one,
+    #dot-2:checked~.category label .two {
+        background: #a4c3bf;
+        border-color: #d9d9d9;
+    }
+
+    form input[type="radio"] {
+        display: none;
+    }
+
+    form .button {
+        height: 45px;
+        margin: 35px 0
+    }
+
+    form .button input {
+        display: flex;
+        height: 100%;
+        width: 100px;
+        justify-content: center;
+        margin: auto;
+        border-radius: 5px;
+        border: none;
+        color: black;
+        font-size: 18px;
+        font-weight: 600;
+        
+        letter-spacing: 1px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    
+        background-color: rgba(159, 234, 228,1);
+    }
+    
+    form .button input:hover {
+        background-color: rgba(159, 234, 228,0.7);
+    }
+
+    @media(max-width: 584px) {
+        .container {
+            max-width: 100%;
+        }
+
+        form .user-details .input-box {
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        form .category {
+            width: 100%;
+        }
+
+        .content form .user-details {
+            max-height: 300px;
+            overflow-y: scroll;
+        }
+
+        .user-details::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        .filenamebox{
+        display: table; 
+        border: 1px solid #ccc;
+        
+        margin-left: 20px;
+        position: relative;
+        padding-left: 20px;
+        order: 2;
+
+        }
+        #file-name{
+        font-size: 10px;
+        text-align:start; 
+        vertical-align: middle;
+        word-break: break-all;
+        white-space: normal;
+        display: table-cell;   
+        /* position: relative; */
+        }
+
+    }
+
+    @media(max-width: 459px) {
+        .container .content .category {
+            flex-direction: column;
+        }
+        #file-name{
+        text-align:start; 
+        vertical-align: middle;
+        display: table-cell;   
+        /* position: relative; */
+        }
+    }
+
+    .uploadbtn-container {
+        display: flex;
+        /* background-color: #afafaf; */
+        border: 1px solid #ccc;
+        background: linear-gradient(9deg, #f1f1f1, #efefef);
+        padding: 8px 30px;
+        border-radius: 5px;
+        width: 100%;
+        margin: auto;
+        justify-content: left;
+        /* align-items: center;  */
+    }
+
+
+    input[type="file"] {
+        /* opacity: 0; */
+        display: none;
+        /* padding-left: 60px;
+  width: 100%;
+  order: 3; */
+    }
+
+    .label_btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 400;
+        padding: 0.25rem 0.75rem;
+        border-radius: 0.25rem;
+        margin: 0px;
+        line-height: 1.6;
+        color: rgb(0, 0, 0);
+        width: 150px;
+        user-select: none;
+        border: 1px solid #ccc;
+        order: 1;
+
+    }
+
+    .label_btn:hover {
+        /* background-color: #f0f0f0; */
+        border-color:#a4c3bf;
+        color: rgb(28, 26, 26);
+        ;
+    }
+
+    .uploadbtn-container:hover {
+        border-color: #a4c3bf;
+    }
+
+    .filenamebox{
+        display: table; 
+        border: 1px solid #ccc;
+        width: 100%;
+        margin-left: 20px;
+        padding-left: 20px;
+        order: 2;
+        
+    }
+    #file-name{
+        text-align:start; 
+        vertical-align: middle;
+        display: table-cell;   
+        position: relative;
+    }
+
+
+    .error-popup {
+    position: fixed;
+    top: 7%;
+    /* left: 39%; */
+    width: 100%;
+  height: auto;
+  padding: 10px;
+  margin: 10px;
+  line-height: 1.8;
+  border-radius: 5px;
+  cursor: hand;
+  cursor: pointer;
+  font-family: sans-serif;
+  font-weight: 400;
+  text-align: center;
+  background-color: #FEE;
+  border: 1px solid #EDD;
+  color: #A66;
+}
+</style>
+
+
+<div class="regform section1">
+  <div class="container">
+      <div class="title">Retinal Disease Detection</div>
+      <div class="content">
+          <form action='retpred' class='main-form needs-validation' method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="user-details">
+                <div class="input-box">
+                  <label for="fullname">Full Name</label>
+                  <input type="text" id="fullname" placeholder="Enter your name" name="fullname" required>
+                </div>
+                <div class="input-box">
+                  <label for="email">Email</label>
+                  <input type="email" id="email" placeholder="Enter your email" name="email" required>
+                </div>
+                
+                <div class="input-box">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" placeholder="Enter your number" name="phone" pattern="[0-9]{10}"  title="Please enter a valid phone number (up to 10 digits)" required>
+                  </div>
+                <div class="input-box">
+                  <label for="age">Age</label>
+                  <input type="number" id="age" placeholder="Enter your Age" name="age" required>
+                </div>
+              </div>
+              <div class="gender-details">
+                  <input type="radio" name="gender" id="dot-1" value="Male" required>
+                  <input type="radio" name="gender" id="dot-2" value="Female" required>
+                  <span class="gender-title">Gender</span>
+                  <div class="category">
+                      <label for="dot-1">
+                          <span class="dot one"></span>
+                          <span class="gender">Male</span>
+                      </label>
+                      <label for="dot-2">
+                          <span class="dot two"></span>
+                          <span class="gender">Female</span>
+                      </label>
+                  </div>
+                  <p id="gender-error" class="error-message"></p>
+              </div>
+              
+              <div class="uploadbtn-container">
+                  <input id="file-upload" type="file" accept="image/*" id="file" name="file" required>
+                  <label for="file-upload" class="label_btn">
+                      Upload File
+                  </label>
+                  <div class="filenamebox">
+                      <p id="file-name"></p>
+                  </div>
+                  <p id="file-error" class="error-message"></p>
+              </div>
+              
+              <div class="button">
+                <input type="submit" value="Detect" id="submit-btn">
+              </div>
+            </form>
+        </div>
+    </div>
+  
+    <script>
+          let file_upload = document.getElementById("file-upload");
+      let fileName = document.getElementById("file-name");
+      file_upload.addEventListener("change", e => {
+          console.log(file_upload.files[0].name);
+          fileName.textContent = file_upload.files[0].name;
+                  });
+  
+                  function validateForm() {
+      var isValid = true;
+  
+      // Validate full name
+      var fullName = document.getElementById("fullname").value;
+      if (fullName.trim() === "") {
+          displayErrorPopup("Please enter the full name.");
+          isValid = false;
+          return isValid; // Stop further validation
+      }
+  
+      // Validate email
+      var email = document.getElementById("email").value;
+      if (email.trim() === "") {
+          displayErrorPopup("Please enter the email.");
+          isValid = false;
+          return isValid; // Stop further validation
+      }
+  
+      // Validate phone number
+      var phoneNumber = document.getElementById("phone").value;
+    if (phoneNumber.trim() === "") {
+        displayErrorPopup("Please enter the phone number.");
+        isValid = false;
+        return isValid; // Stop further validation
+    }
+    else if (!/^\d{10}$/.test(phoneNumber)) {
+        displayErrorPopup("Please enter a valid phone number (up to 10 digits).");
+        isValid = false;
+        return isValid; // Stop further validation
+    }
+  
+      // Validate age
+      var age = document.getElementById("age").value;
+      if (age.trim() === "") {
+          displayErrorPopup("Please enter the age.");
+          isValid = false;
+          return isValid; // Stop further validation
+      }
+  
+      // Validate gender
+      var genderSelected = document.querySelector('input[name="gender"]:checked');
+      if (!genderSelected) {
+          displayErrorPopup("Please select a gender.");
+          isValid = false;
+      }
+  
+      if (!isValid) {
+          return isValid; // Stop further validation
+      }
+  
+      // Validate file
+      var fileSelected = document.getElementById("file-upload").files[0];
+      if (!fileSelected) {
+          displayErrorPopup("Please select a file.");
+          isValid = false;
+          return isValid; // Stop further validation
+      }
+  
+      return isValid;
+  }
+  
+  function displayErrorPopup(message) {
+      var popup = document.createElement("div");
+      popup.classList.add("error-popup");
+      popup.textContent ="⚠ "+ message;
+  
+      document.body.appendChild(popup);
+  
+      setTimeout(function() {
+          popup.remove();
+      }, 3000); // Remove the popup after 3 seconds
+  }
+  
+  document.getElementById("submit-btn").addEventListener("click", function(event) {
+      if (!validateForm()) {
+          event.preventDefault(); // Prevent form submission if validation fails
+      }
+  });
+  
+  </script>
+  
+  {% endblock %}
